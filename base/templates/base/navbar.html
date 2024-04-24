@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Navbar</title>
+  </head>
+  <body>
+    <nav>
+      <div id="website-name-wrapper">
+        <h1 id="website-name" style="color: #BB2525;">CureConnect</h1>
+      </div>
+      {% if request.user.is_authenticated %}
+      <div id="nav-btn-wrapper">
+        
+        <span id="hello-msg">Hello, {{request.user}}</span>
+        <button id="logout-btn-nav" onclick="openURL('logout')">Logout</button>
+      </div>
+      {% else %}
+      <div id="nav-btn-wrapper">
+        <button id="login-btn-nav" onclick="openURL('login')">Login</button>
+        <button id="signup-btn-nav" onclick="openURL('signup')">Create Account</button>
+      </div>
+      {% endif %}
+    </nav>
+
+    <script>
+        const openURL = (url) =>{
+            window.open(`/${url}`, '_self')
+        }
+    </script>
+  </body>
+</html>

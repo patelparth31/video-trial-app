@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'styles/main.css' %}" />
+    <link type="image/png" sizes="32x32" rel="icon" href="{% static 'images/icons8-c-others-32.png' %}">
+    <title>Login</title>
+  </head>
+  <body>
+    <main id="main-body">
+      <section id="left-portion">
+        <div id="login-form-wrapper">
+          <h1 id="login-heading">Login</h1>
+          <span id="tagline">To proceed further please enter your details</span>
+            {% for message in messages %}
+            <p id="messages">{{message}}</p>
+            {% endfor %}
+          <form method="POST" id="login-form">
+            {% csrf_token %}
+            <div class="form-field">
+              <label class="input-label-lobby">Username</label>
+              <input type="text"  class="lobby-input" name='username' placeholder="Enter your username" />
+            </div>
+
+            <div class="form-field">
+              <label class="input-label-lobby">Password</label>
+              <input type="password"  class="lobby-input" name='password' placeholder="Enter your password" />
+            </div>
+            <div class="form-field">
+              <input type="submit" class="submit-btn" value="Login" />
+            </div>
+          </form>
+
+          <div class="extras-div">
+            <span>Don't have an account?</span>
+            <span id="create-account-span"
+              ><a href="/signup">Create Account</a></span
+            >
+          </div>
+        </div>
+      </section>
+
+      <section id="right-portion">
+        <img src="{% static 'images/Sprinkle.svg'%}" id="login-img" />
+      </section>
+    </main>
+
+    <script>
+      let form_fields = document.getElementsByTagName("input");
+
+      form_fields[1].placeholder = "Username";
+      form_fields[2].placeholder = "Password";
+
+      form_fields[1].className = "lobby-input";
+      form_fields[2].className = "lobby-input";
+    </script>
+  </body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'styles/main.css' %}" />
+    <link type="image/png" sizes="32x32" rel="icon" href="{% static 'images/icons8-c-others-32.png' %}">
+    <title>Create Account</title>
+  </head>
+  <body>
+    <main id="main-body">
+      <section id="left-portion">
+        <div id="login-form-wrapper">
+          <h1 id="login-heading">Create Account</h1>
+          <span id="tagline">To proceed further please enter your details</span>
+
+          <form method="POST" id="login-form">
+            {% csrf_token %}
+            <div class="form-field">
+                <label class="input-label-lobby">Username</label>
+                {{form.username}}
+            </div>
+
+            <div class="form-field">
+                <label class="input-label-lobby">Email</label>
+                {{form.email}}
+            </div>
+
+            <div class="form-field">
+                <label class="input-label-lobby">Password</label>
+                {{form.password1}}
+            </div>
+
+
+            <div class="form-field">
+                <label class="input-label-lobby">Confirm Password</label>
+                {{form.password2}}
+            </div>
+            <div class="form-field">
+            <input type="submit" class="submit-btn" value="Create account"/>
+            </div> 
+
+            {{form.errors}}
+          </form>
+
+          <div class="extras-div">
+          <span>Have an account?</span>
+          <span id="create-account-span"><a href="/login">Login</a></span>
+        </div>
+        </div>
+      </section>
+
+      <section id="right-portion">
+        <img src="{% static 'images/Curve Line.svg'%}" id="login-img"/>
+      </section>
+    </main>
+
+    <script>
+        let form_fields = document.getElementsByTagName('input')
+
+        form_fields[1].placeholder = 'Username';
+        form_fields[2].placeholder = 'Email Address';
+        form_fields[3].placeholder = 'Password';
+        form_fields[4].placeholder = 'Re-enter Password';
+
+
+        
+        form_fields[1].className = 'lobby-input';
+        form_fields[2].className = 'lobby-input';
+        form_fields[3].className = 'lobby-input';
+        form_fields[4].className = 'lobby-input';
+    </script>
+  </body>
+</html>

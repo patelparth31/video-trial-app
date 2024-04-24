@@ -1,0 +1,44 @@
+{% extends 'base/main.html' %} {% load static %} {% block content %}
+
+<main>
+  <nav id="room-nav">
+    <h1 id="website-name" onclick="openURL()" style="color: #BB2525;">
+      CureConnect
+    </h1>
+    <section id="room-name-wrapper">
+      <h1 >Appointment ID: <span id="room-name"></span></h1>
+    </section>
+
+<!--    <button id="invite-btn">Invite your friends</button>-->
+  </nav>
+  
+
+  <section id="video-streams"></section>
+
+  <section id="controls-wrapper">
+
+    <div class="icon-wrapper">
+      <i class="fa-solid fa-microphone" id = "mic-btn"></i>
+    </div>
+    <div class="icon-wrapper">
+      <i class="fa-solid fa-video" id="video-btn"></i>
+    </div>
+    <div class="icon-wrapper">
+      <i class="fa-solid fa-phone-slash" id="end-btn"></i>
+    </div>
+  </section>
+</main>
+
+<script
+  type="text/javascript"
+  src="{% static 'assets/AgoraRTC_N-4.15.0.js' %}"
+></script>
+<script type="text/javascript" src="{% static 'js/streams.js'%}"></script>
+<script>
+  const openURL = () =>{
+      window.open(`/`, '_self')
+  }
+
+
+</script>
+{% endblock content %}
